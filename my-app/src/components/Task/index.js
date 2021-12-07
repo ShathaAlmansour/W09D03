@@ -2,7 +2,6 @@ import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../reducers/login";
 import Swal from "sweetalert2";
 
 const URL = "http://localhost:5000";
@@ -13,7 +12,7 @@ const Task = () => {
   const [id, setId] = useState("");
   const [tasks, setTasks] = useState([]);
   const [task, setTask] = useState("");
-
+  const dispatch = useDispatch();
   useEffect(() => {
     const storgToken = localStorage.getItem("token");
     setToken(storgToken);
@@ -54,6 +53,10 @@ const Task = () => {
       console.log(error);
     }
     gettasks(token);
+  };
+
+  const logout = () => {
+    localStorage.clear();
   };
 
   const updatetaks = async (id) => {
@@ -113,6 +116,7 @@ const Task = () => {
                 placeholder="Add a new todo"
               />
               <button onClick={addtask}>ADD</button>
+              <button onClick={logout}>logout</button>
             </div>
             {tasks.length ? (
               <ul>
@@ -131,7 +135,7 @@ const Task = () => {
                 ))}
               </ul>
             ) : (
-              <h2> There is no task</h2>
+              <h2> No task</h2>
             )}
           </div>
         )}
