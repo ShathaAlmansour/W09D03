@@ -4,7 +4,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
 
-const URL = "http://localhost:5000";
+const BASE_URL = process.env.REACT_APP_BASE_URL
 
 const Task = () => {
   const [token, setToken] = useState("");
@@ -25,7 +25,7 @@ const Task = () => {
 
   const gettasks = async (token) => {
     try {
-      const res = await axios.get(`${URL}/tasks`, {
+      const res = await axios.get(`${BASE_URL}/tasks`, {
         headers: {
           Authorization: `Brarer ${token}`,
         },
