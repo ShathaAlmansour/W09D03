@@ -2,6 +2,8 @@
 This is app for a todo list in Express and React using Redux 
 While running locally: (http://localhost:5000)
 
+## ER diagram
+<img src='https://files.slack.com/files-pri/T02FM3FE1DJ-F02Q3BSM8N8/untitled_diagram-page-1.drawio.png' alt='ERdiagram'/>
 
 ## User Stories
 
