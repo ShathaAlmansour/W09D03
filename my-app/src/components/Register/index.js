@@ -1,11 +1,15 @@
 import { React, useState } from "react";
 import axios from "axios";
-const BASE_URL = process.env.REACT_APP_BASE_URL;
+const BASE_URL=process.env.REACT_APP_BASE_URL;
 const Register = () => {
   const [logemail, setLogemail] = useState();
   const [logpassword, setLogpassword] = useState();
   const [logrole, setLogrole] = useState();
+
+  console.log(process.env.REACT_APP_BASE_URL);
+
   const register = async (val) => {
+    
     const result = await axios.post(`${BASE_URL}/resgister`, {
       email: logemail,
       password: logpassword,

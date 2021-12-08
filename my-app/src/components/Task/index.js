@@ -39,7 +39,7 @@ const Task = () => {
   const addtask = async () => {
     try {
       await axios.post(
-        `${URL}/task`,
+        `${BASE_URL}/task`,
         {
           name: task,
         },
@@ -71,7 +71,7 @@ const Task = () => {
       });
       if (updatetask) {
         await axios.put(
-          `${URL}/tasksupdeta/${id}`,
+          `${BASE_URL}/tasksupdeta/${id}`,
           {
             name: updatetask,
           },
@@ -90,7 +90,7 @@ const Task = () => {
   };
   const deletetask = async (id) => {
     try {
-      await axios.delete(`${URL}/taskdelet/${id}`, {
+      await axios.delete(`${BASE_URL}/taskdelet/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -113,21 +113,21 @@ const Task = () => {
             <div>
               <input
                 onChange={(e) => setTask(e.target.value)}
-                placeholder="Add a new todo"
+                placeholder="Add a new task"
               />
               <button onClick={addtask}>ADD</button>
               <button onClick={logout}>logout</button>
             </div>
             {tasks.length ? (
               <ul>
-                {tasks.map((todo) => (
-                  <div key={todo._id} className="listItem">
-                    <li>{todo.name}</li>
+                {tasks.map((task) => (
+                  <div key={task._id} className="listItem">
+                    <li>{task.name}</li>
                     <div>
-                      <button onClick={() => updatetaks(todo._id)}>
+                      <button onClick={() => updatetaks(task._id)}>
                         Update
                       </button>
-                      <button onClick={() => deletetask(todo._id)}>
+                      <button onClick={() => deletetask(task._id)}>
                         Delete
                       </button>
                     </div>
@@ -135,7 +135,7 @@ const Task = () => {
                 ))}
               </ul>
             ) : (
-              <h2> No task</h2>
+              <h2>No task</h2>
             )}
           </div>
         )}

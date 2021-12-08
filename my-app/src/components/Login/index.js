@@ -6,12 +6,14 @@ import Task from "../Task";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../reducers/login";
 const BASE_URL = process.env.REACT_APP_BASE_URL
+
 const Login = () => {
   const state = useSelector((state) => {
     return {
       singnIn: state.singnIn,
     };
   });
+  console.log(BASE_URL);
   console.log(state);
   console.log(state.singnIn);
   const dispatch = useDispatch();
